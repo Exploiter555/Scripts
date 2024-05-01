@@ -108,6 +108,11 @@ function createSlider(Frame, Min, Max, DefaultValue, Position, Size, Callback)
         end
     end
 
+    local function moveDown()
+        local currentValue = tonumber(ValueLabel.Text)
+        update(math.max(Min, currentValue - 5))
+    end
+
     Slider.MouseButton1Down:Connect(function()
         dragging = true
         local mouse = game.Players.LocalPlayer:GetMouse()
@@ -124,6 +129,7 @@ function createSlider(Frame, Min, Max, DefaultValue, Position, Size, Callback)
         conn2 = game:GetService("UserInputService").InputEnded:Connect(function(input)
             if input.UserInputType == Enum.UserInputType.MouseButton1 then
                 dragging = false
+                moveDown()
                 conn1:Disconnect()
                 conn2:Disconnect()
             end
