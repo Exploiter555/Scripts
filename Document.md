@@ -40,3 +40,8 @@ local textBox = Hub.createTextBox(Frame, "textBoxESC", function()
     print("Script")
 end)
 ```
+
+# Create Notification
+```lua
+createNotification("Title", "Text", "iconID")
+```
