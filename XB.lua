@@ -52,6 +52,8 @@ function Hub.createFrame(Title, SelectTheme)
 end
 
 function Hub.createTab(Text, Theme)
+    local TabFrame = Hub.TabFrame
+
     local Tab = Instance.new("TextButton")
     Tab.Parent = TabFrame
     Tab.Text = Text
@@ -67,12 +69,17 @@ function Hub.createTab(Text, Theme)
         selectedTheme = Theme
     end
 
-    Tab.BackgroundColor3 = selectedTheme.TabColor3
+    Tab.BackgroundColor3 = selectedTheme.BackgroundColor3
     Tab.TextColor3 = selectedTheme.TextColor3
 
     return Tab
 end
+
 function createSlider(Frame, Min, Max, DefaultValue, Position, Size, Callback)
+    if Min >= Max then
+        error("Min value must be less than Max value.")
+    end
+
     local Slider = Instance.new("TextButton")
     Slider.Parent = Frame
     Slider.AutoButtonColor = false
@@ -98,7 +105,6 @@ function createSlider(Frame, Min, Max, DefaultValue, Position, Size, Callback)
     ValueLabel.TextColor3 = Color3.new(1, 1, 1)
     ValueLabel.BackgroundTransparency = 1
 
-    local dragging = false
     local function update(value)
         local percent = math.clamp((value - Min) / (Max - Min), 0, 1)
         SliderBar.Size = UDim2.new(percent, 0, 1, 0)
@@ -108,14 +114,15 @@ function createSlider(Frame, Min, Max, DefaultValue, Position, Size, Callback)
         end
     end
 
-    local function moveDown()
+    local function decreaseValue()
         local currentValue = tonumber(ValueLabel.Text)
         update(math.max(Min, currentValue - 5))
     end
 
     Slider.MouseButton1Down:Connect(function()
-        dragging = true
         local mouse = game.Players.LocalPlayer:GetMouse()
+        local dragging = true
+
         local function updateDrag()
             if dragging then
                 local percent = math.clamp((mouse.X - Slider.AbsolutePosition.X) / Slider.AbsoluteSize.X, 0, 1)
@@ -123,13 +130,14 @@ function createSlider(Frame, Min, Max, DefaultValue, Position, Size, Callback)
                 update(value)
             end
         end
+
         updateDrag()
-        local conn1, conn2
-        conn1 = Slider.MouseMoved:Connect(updateDrag)
-        conn2 = game:GetService("UserInputService").InputEnded:Connect(function(input)
+
+        local conn1 = Slider.MouseMoved:Connect(updateDrag)
+        local conn2 = game:GetService("UserInputService").InputEnded:Connect(function(input)
             if input.UserInputType == Enum.UserInputType.MouseButton1 then
                 dragging = false
-                moveDown()
+                decreaseValue()
                 conn1:Disconnect()
                 conn2:Disconnect()
             end
@@ -137,6 +145,18 @@ function createSlider(Frame, Min, Max, DefaultValue, Position, Size, Callback)
     end)
 
     return Slider
+end
+
+function Hub.createTextBox(Frame, DefaultText)
+    local TextBox = Instance.new("TextBox")
+    TextBox.Parent = Frame
+    TextBox.Size = UDim2.new(0, 200, 0, 30)
+    TextBox.Position = UDim2.new(0.5, -100, 0, 100)
+    TextBox.AnchorPoint = Vector2.new(0.5, 0)
+    TextBox.PlaceholderText = "Enter text here..."
+    TextBox.Text = DefaultText or ""
+
+    return TextBox
 end
 
 return Hub
