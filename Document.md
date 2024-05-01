@@ -6,9 +6,14 @@ loadstring(game:Httpget(https://raw.githubusercontent.com/Exploiter555/Scripts/m
 
 # Creating Ui
 ```lua
-
+createFrame(Title, SelectTheme)
 ```
-
+Infos here
 ```txt
 (Title, Theme)
+```
+
+# Creating Tab
+```lua
+
 ```
