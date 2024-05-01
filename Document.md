@@ -25,3 +25,10 @@ createButton(frame, "Button 1", function()
     print("Button 1 clicked!")
 end)
 ```
+
+# Create Slider
+```lua
+createSlider(frame, 0, 100, 50, UDim2.new(1, -220, 0, 30), nil, nil, function()
+    print("Pare")
+end)
+```
