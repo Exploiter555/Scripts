@@ -171,4 +171,13 @@ function Hub.createTextBox(Frame, DefaultText, ButtonClickFunction)
     return TextBox
 end
 
+function Hub.createNotification(Title, Text, id)
+    local Notification = game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = Title;
+        Text = Text;
+        Icon = "rbxthumb://type=Asset&id=" .. id;
+    })
+    return Notification
+end
+
 return Hub
