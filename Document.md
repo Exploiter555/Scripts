@@ -18,3 +18,10 @@ createFrame("Title", "theme")
 ```lua
 createTab("Tab 1")
 ```
+
+# Create Button
+```lua
+createButton(frame, "Button 1", function()
+    print("Button 1 clicked!")
+end)
+```
