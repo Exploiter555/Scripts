@@ -1,6 +1,7 @@
 # Booting the library
 ```lua
 
+loadstring(game:Httpget(https://raw.githubusercontent.com/Exploiter555/Scripts/main/XB.lua))()
 ```
 
 # Creating Ui
