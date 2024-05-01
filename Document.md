@@ -15,5 +15,5 @@ Infos here
 
 # Creating Tab
 ```lua
-
+function Hub.createTab(TabFrame, Text, Theme)
 ```
