@@ -28,7 +28,7 @@ end)
 
 # Create Slider
 ```lua
-createSlider(frame, 0, 100, 50, UDim2.new(1, -220, 0, 30), nil, nil, function()
-    print("Pare")
+createSlider(frame, 0, 100, 50, UDim2.new(0, 200, 0, 20), function(value)
+    print("Slider value changed to:", value)
 end)
 ```
