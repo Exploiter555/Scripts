@@ -48,10 +48,10 @@ function Hub.createFrame(Title, SelectTheme)
     Frame.BackgroundColor3 = selectedTheme.BackgroundColor3
     TitleLabel.TextColor3 = selectedTheme.TextColor3
 
-    return Frame, TabFrame
+    return Frame, TabFrame, selectedTheme
 end
 
-function Hub.createTab(TabFrame, Text, Theme)
+function Hub.createTab(Text, Theme)
     local Tab = Instance.new("TextButton")
     Tab.Parent = TabFrame
     Tab.Text = Text
@@ -63,8 +63,8 @@ function Hub.createTab(TabFrame, Text, Theme)
         TextColor3 = Color3.fromRGB(255, 255, 255)
     }
 
-    if Theme and themes[Theme] then
-        selectedTheme = themes[Theme]
+    if Theme and Theme.BackgroundColor3 and Theme.TextColor3 then
+        selectedTheme = Theme
     end
 
     Tab.BackgroundColor3 = selectedTheme.TabColor3
