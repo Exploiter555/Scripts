@@ -147,7 +147,7 @@ function createSlider(Frame, Min, Max, DefaultValue, Position, Size, Callback)
     return Slider
 end
 
-function Hub.createTextBox(Frame, DefaultText)
+function Hub.createTextBox(Frame, DefaultText, ButtonClickFunction)
     local TextBox = Instance.new("TextBox")
     TextBox.Parent = Frame
     TextBox.Size = UDim2.new(0, 200, 0, 30)
@@ -155,6 +155,16 @@ function Hub.createTextBox(Frame, DefaultText)
     TextBox.AnchorPoint = Vector2.new(0.5, 0)
     TextBox.PlaceholderText = "Enter text here..."
     TextBox.Text = DefaultText or ""
+
+    local function OnTextBoxFocusLost(enterPressed)
+        if enterPressed then
+            ButtonClickFunction()
+        end
+    end
+
+    TextBox.FocusLost:Connect(function(enterPressed)
+        OnTextBoxFocusLost(enterPressed)
+    end)
 
     return TextBox
 end
