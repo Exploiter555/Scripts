@@ -5,15 +5,17 @@ loadstring(game:Httpget(https://raw.githubusercontent.com/Exploiter555/Scripts/m
 ```
 
 # Creating Ui
+## Themes
+• Dark
+• Light
+
+Coming more Soon! 💡
 ```lua
 createFrame(Title, SelectTheme)
 ```
-Infos here
-```txt
-(Title, Theme)
-```
+
 
 # Creating Tab
 ```lua
-function Hub.createTab(TabFrame, Text, Theme)
+
 ```
