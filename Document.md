@@ -33,7 +33,7 @@ createSlider(frame, 0, 100, 50, UDim2.new(0, 200, 0, 20), function(value)
 end)
 ```
 
-#Create TextBox
+# Create TextBox
 ```lua
 
 local textBox = Hub.createTextBox(Frame, "textBoxESC", function()
