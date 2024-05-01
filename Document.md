@@ -11,11 +11,11 @@ loadstring(game:Httpget(https://raw.githubusercontent.com/Exploiter555/Scripts/m
 
 Coming more Soon! 💡
 ```lua
-createFrame(Title, SelectTheme)
+createFrame("Title", "theme")
 ```
 
 
 # Creating Tab
 ```lua
-
+createTab("Tab 1")
 ```
