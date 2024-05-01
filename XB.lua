@@ -1,5 +1,7 @@
 local Hub = {}
 
+local Player = game:GetService("Players").LocalPlayer
+
 function Hub.createFrame(Title, SelectTheme)
     local ScreenGui = Instance.new("ScreenGui")
     ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
