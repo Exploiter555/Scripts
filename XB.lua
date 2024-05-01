@@ -72,5 +72,65 @@ function Hub.createTab(Text, Theme)
 
     return Tab
 end
+function createSlider(Frame, Min, Max, DefaultValue, Position, Size, Callback)
+    local Slider = Instance.new("TextButton")
+    Slider.Parent = Frame
+    Slider.AutoButtonColor = false
+    Slider.Text = ""
+    Slider.Size = Size or UDim2.new(0, 200, 0, 20)
+    Slider.Position = Position or UDim2.new(0, 0, 0, 0)
+
+    local SliderBackground = Instance.new("Frame")
+    SliderBackground.Parent = Slider
+    SliderBackground.Size = UDim2.new(1, 0, 1, 0)
+    SliderBackground.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+
+    local SliderBar = Instance.new("Frame")
+    SliderBar.Parent = SliderBackground
+    SliderBar.Size = UDim2.new((DefaultValue - Min) / (Max - Min), 0, 1, 0)
+    SliderBar.BackgroundColor3 = Color3.fromRGB(0, 162, 255)
+
+    local ValueLabel = Instance.new("TextLabel")
+    ValueLabel.Parent = Slider
+    ValueLabel.Text = DefaultValue
+    ValueLabel.Size = UDim2.new(0, 40, 0, 20)
+    ValueLabel.Position = UDim2.new(1, 5, 0, 0)
+    ValueLabel.TextColor3 = Color3.new(1, 1, 1)
+    ValueLabel.BackgroundTransparency = 1
+
+    local dragging = false
+    local function update(value)
+        local percent = math.clamp((value - Min) / (Max - Min), 0, 1)
+        SliderBar.Size = UDim2.new(percent, 0, 1, 0)
+        ValueLabel.Text = math.floor(value)
+        if Callback then
+            Callback(value)
+        end
+    end
+
+    Slider.MouseButton1Down:Connect(function()
+        dragging = true
+        local mouse = game.Players.LocalPlayer:GetMouse()
+        local function updateDrag()
+            if dragging then
+                local percent = math.clamp((mouse.X - Slider.AbsolutePosition.X) / Slider.AbsoluteSize.X, 0, 1)
+                local value = Min + percent * (Max - Min)
+                update(value)
+            end
+        end
+        updateDrag()
+        local conn1, conn2
+        conn1 = Slider.MouseMoved:Connect(updateDrag)
+        conn2 = game:GetService("UserInputService").InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                dragging = false
+                conn1:Disconnect()
+                conn2:Disconnect()
+            end
+        end)
+    end)
+
+    return Slider
+end
 
 return Hub
