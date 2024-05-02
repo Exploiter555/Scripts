@@ -1,7 +1,7 @@
 # Booting the library
 ```lua
 
-loadstring(game:Httpget("https://raw.githubusercontent.com/Exploiter555/Scripts/main/XB.lua"))()
+local lib =loadstring(game:Httpget("https://raw.githubusercontent.com/Exploiter555/Scripts/main/XB.lua"))()
 ```
 
 # Creating Ui
@@ -10,25 +10,25 @@ Dark,Light
 
 Coming more Soon! 💡
 ```lua
-createFrame("Title", "theme")
+local ui = createFrame("Title", "theme")
 ```
 
 
 # Creating Tab
 ```lua
-createTab("Tab 1")
+local tab = createTab("Tab 1")
 ```
 
 # Create Button
 ```lua
-createButton(frame, "Button 1", function()
+local Button = createButton(frame, "Button 1", function()
     print("Button 1 clicked!")
 end)
 ```
 
 # Create Slider
 ```lua
-createSlider(frame, 0, 100, 50, UDim2.new(0, 200, 0, 20), function(value)
+local Slider = createSlider(frame, 0, 100, 50, UDim2.new(0, 200, 0, 20), function(value)
     print("Slider value changed to:", value)
 end)
 ```
@@ -43,5 +43,5 @@ end)
 
 # Create Notification
 ```lua
-createNotification("Title", "Text", "iconID")
+local Notification = createNotification("Title", "Text", "iconID")
 ```
