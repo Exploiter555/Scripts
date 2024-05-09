@@ -7,16 +7,7 @@ local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Exploiter
 
 ## Creating UI
 Themes -->
-<a href="https://github.com/Exploiter555/Scripts/blob/main/Themes.md">
-  <img src="https://img.shields.io/badge/Readme-Themes-ff69b4.svg" alt="Readme" style="animation: rainbow 2s linear infinite;">
-</a>
-
-<style>
-  @keyframes rainbow {
-    0% { filter: hue-rotate(0deg); }
-    100% { filter: hue-rotate(360deg); }
-  }
-</style>
+[![Readme](https://img.shields.io/badge/Readme-Themes-ff69b4.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Exploiter555/Scripts/blob/main/Themes.md)
 
 ```lua
 local ui, tabFrame, selectedTheme = Hub.createFrame("Title", "dark")
