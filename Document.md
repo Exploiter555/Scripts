@@ -8,8 +8,15 @@ local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Exploiter
 ## Creating UI
 Themes -->
 <a href="https://github.com/Exploiter555/Scripts/blob/main/Themes.md">
-  <img src="https://img.shields.io/badge/Readme-Themes-ff69b4.svg" alt="Readme" style="transition: 0.5s ease-out; background-image: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3); background-size: 400% 400%;" onmouseover="this.style.backgroundPosition='right';" onmouseout="this.style.backgroundPosition='left';">
+  <img src="https://img.shields.io/badge/Readme-Themes-ff69b4.svg" alt="Readme" style="animation: rainbow 2s linear infinite;">
 </a>
+
+<style>
+  @keyframes rainbow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+</style>
 
 ```lua
 local ui, tabFrame, selectedTheme = Hub.createFrame("Title", "dark")
