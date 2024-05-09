@@ -1,47 +1,51 @@
-# Booting the library
-```lua
 
-local lib = loadstring(game:Httpget("https://raw.githubusercontent.com/Exploiter555/Scripts/main/XB.lua"))()
+```markdown
+# Library Installation
+```lua
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Exploiter555/Scripts/main/XB.lua"))()
 ```
 
-# Creating Ui
-## Themes
-Dark,Light
+## Creating UI
 
-Coming more Soon! 💡
+### Themes
+Choose from Dark or Light themes.
+
 ```lua
-local ui = createFrame("Title", "theme")
+local ui, tabFrame, selectedTheme = Hub.createFrame("Title", "dark")
 ```
 
+## Creating Tabs
 
-# Creating Tab
 ```lua
-local tab = createTab("Tab 1")
+local tabButton, tabContent = Hub.createTab("Tab 1", ui, tabFrame)
 ```
 
-# Create Button
+## Creating Buttons
+
 ```lua
-local Button = createButton(frame, "Button 1", function()
+local button = Hub.createButton(ui, "Button 1", function()
     print("Button 1 clicked!")
 end)
 ```
 
-# Create Slider
+## Creating Sliders
+
 ```lua
-local Slider = createSlider(frame, 0, 100, 50, UDim2.new(0, 200, 0, 20), function(value)
+local slider = Hub.createSlider(ui, 0, 100, 50, UDim2.new(0, 200, 0, 20), function(value)
     print("Slider value changed to:", value)
 end)
 ```
 
-# Create TextBox
-```lua
+## Creating Text Boxes
 
-local textBox = Hub.createTextBox(Frame, "textBoxESC", function()
-    print("Script")
+```lua
+local textBox = Hub.createTextBox(ui, "textBoxESC", function()
+    print("TextBox submitted!")
 end)
 ```
 
-# Create Notification
+## Creating Notifications
+
 ```lua
-local Notification = createNotification("Title", "Text", "iconID")
+local notification = Hub.createNotification("Title", "Text", "iconID")
 ```
