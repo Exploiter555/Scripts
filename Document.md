@@ -7,7 +7,7 @@ local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Exploiter
 
 ## Creating UI
 Themes -->
-[![Readme](https://img.shields.io/badge/Readme-Go%20to%20Themes-blue.svg)](https://github.com/Exploiter555/Scripts/blob/main/Themes.md)
+[![Readme](https://img.shields.io/badge/Readme-Themes-orange.svg)](https://github.com/Exploiter555/Scripts/blob/main/Themes.md)
 ```lua
 local ui, tabFrame, selectedTheme = Hub.createFrame("Title", "dark")
 ```
