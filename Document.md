@@ -1,7 +1,5 @@
 
-```markdown
 # Library Installation
-```
 
 ```lua
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Exploiter555/Scripts/main/XB.lua"))()
