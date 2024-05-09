@@ -10,7 +10,9 @@ Themes -->
 [![Readme](https://img.shields.io/badge/Readme-Themes-ff69b4.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Exploiter555/Scripts/blob/main/Themes.md)
 
 ```lua
-local ui, tabFrame, selectedTheme = Hub.createFrame("Title", "dark")
+local ui = Hub.createFrame("Title", "dark")
+local tabFrame = ui.Main
+local selectedTheme = ui.Theme
 ```
 
 ## Creating Tabs
