@@ -16,7 +16,7 @@ local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Exploiter
 Initialize the UI frame and select a theme:
 
 ```lua
-local ui = Hub.createFrame("Title", "dark")
+local frame = Hub.createFrame("RainbowTheme", "dark")
 local tabFrame = ui.Main
 local selectedTheme = ui.Theme
 ```
