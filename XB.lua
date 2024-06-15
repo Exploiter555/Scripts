@@ -81,7 +81,8 @@ local function applyRainbowTheme(uiElement)
     updateColors()
     uiElement:GetPropertyChangedSignal("AbsolutePosition"):Connect(updateColors)
     uiElement:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateColorse
-end) 
+end
+applyRainbowTheme(frame.Main)
     }
 
     local selectedTheme = themes.dark
