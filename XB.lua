@@ -41,6 +41,52 @@ function Hub.createFrame(Title, SelectTheme)
             TextColor3 = Color3.fromRGB(0, 0, 0),
             TabColor3 = Color3.fromRGB(200, 200, 200)
         }
+rainbow 
+local function rainbowColor(position)
+    local frequency = 2 -- Controls how fast colors change
+    local center = 128   -- Color center (128 for full range)
+    local width = 127    -- Color width (127 for full range)
+    
+    local red = math.sin(frequency * position + 0) * width + center
+    local green = math.sin(frequency * position + 2) * width + center
+    local blue = math.sin(frequency * position + 4) * width + center
+    
+    return Color3.fromRGB(math.floor(red), math.floor(green), math.floor(blue))
+end
+
+-- Function to apply rainbow colors to UI elements
+local function applyRainbowTheme(uiElement)
+    local step = 1 / uiElement.AbsoluteSize.X
+    local currentPosition = 0
+    
+    uiElement:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+        local sizeX = uiElement.AbsoluteSize.X
+        step = 1 / sizeX
+    end)
+    
+    uiElement:GetPropertyChangedSignal("AbsolutePosition"):Connect(function()
+        currentPosition = uiElement.AbsolutePosition.X
+    end)
+    
+    local function updateColors()
+        local children = uiElement:GetChildren()
+        for _, child in ipairs(children) do
+            if child:IsA("GuiObject") then
+                local relativePosition = (child.Position.X.Offset - currentPosition) / uiElement.AbsoluteSize.X
+                child.BackgroundColor3 = rainbowColor(relativePosition)
+            end
+        end
+    end
+    
+    updateColors()
+    uiElement:GetPropertyChangedSignal("AbsolutePosition"):Connect(updateColors)
+    uiElement:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateColors)
+end
+
+-- Example usage for creating a frame with rainbow theme
+local frame = Hub.createFrame("RainbowTheme", "dark")  -- Replace with your UI creation method
+applyRainbowTheme(frame.Main)
+
     }
 
     local selectedTheme = themes.dark
