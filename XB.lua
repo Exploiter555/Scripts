@@ -80,13 +80,8 @@ local function applyRainbowTheme(uiElement)
     
     updateColors()
     uiElement:GetPropertyChangedSignal("AbsolutePosition"):Connect(updateColors)
-    uiElement:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateColors)
-end
-
--- Example usage for creating a frame with rainbow theme
-local frame = Hub.createFrame("RainbowTheme", "dark")  -- Replace with your UI creation method
-applyRainbowTheme(frame.Main)
-
+    uiElement:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateColorse
+end) 
     }
 
     local selectedTheme = themes.dark
