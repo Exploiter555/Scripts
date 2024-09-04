@@ -242,5 +242,9 @@ function Hub.createNotification(Title, Text, id)
     })
     return Notification
 end
+function Hub.createEndFrame()
+		ScreenGui:Destroy()
+		return EndFrame
+end
 
 return Hub
